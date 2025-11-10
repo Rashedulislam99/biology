@@ -1,3 +1,14 @@
+
+<style>
+ .m-0{
+    font-size: 30px !important
+ }
+
+
+</style>
+
+
+
 <?php
 echo Page::title(["title"=>"Manage Chapter"]);
 echo Page::body_open();

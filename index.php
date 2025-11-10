@@ -14,7 +14,7 @@
 <?php include_once("header.php") ?>
 
 		<!-- Main content Start -->
-        <div class="main-content">
+       
             <!-- Banner Section Start -->
             <div id="rs-banner" class="rs-banner style3">
                 <div class="container pt-90 md-pt-50">
@@ -689,4 +689,4 @@
                 </div>
             </div>
             <!-- Newsletter section end -->
-        <?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
