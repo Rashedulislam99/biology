@@ -78,7 +78,8 @@
  <?php
       $subject_id= $_GET["subject_id"] ?? 1;
       $paper_id= $_GET["paper_id"]?? 1;
-      $data= Chapter::all_by_subject_id($subject_id,$paper_id);
+      $quizze_id= $_GET["quizze_id"]?? 1;
+      $data= Chapter::all_by_subject_id($subject_id,$paper_id,$quizze_id);
 
     //   print_r($data);
 
@@ -88,7 +89,8 @@
       
        <div class=\"chapter-card\">
             <h2>১.$value->name</h2>
-            <a href=\" $base_url/Courses/lecture/$value->id\">দেখুন</a>
+            <a href=\" $base_url/Courses/lecture/$value->id\">pdf দেখুন</a>
+            <a href=\" $base_url/Courses/quizze/$value->id\">Quizze দেখুন</a>
         </div>
       ";
      }
