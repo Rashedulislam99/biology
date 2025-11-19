@@ -1101,7 +1101,7 @@ blockquote p {
   padding-right: 60px;
   background-color: #273c66;
   color:white;
-  height: 100px;
+  /* height: 100px; */
 }
 .container-fluid2 {
   padding-left: 0px;
