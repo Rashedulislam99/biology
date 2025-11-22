@@ -1,6 +1,10 @@
+
+
+
+
 <?php
 $pdf = $_GET['file'] ?? '';
-
+//ai page ar kono kaj ajo daklam naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 if (!$pdf) {
     die("PDF file not specified.");
 }
@@ -9,7 +13,7 @@ if (!$pdf) {
 $pdf = basename($pdf);
 
 // PDFs folder
-$pdf_folder = "http://localhost/Biology_JR/admin/admin/pdfs/";
+$pdf_folder = "<?= $base_url?>/pdfs/";
 
 // Full URL to PDF
 $pdf_url = $pdf_folder . $pdf;

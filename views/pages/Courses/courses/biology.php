@@ -98,57 +98,7 @@
   
         ?>
   
-      <!-- <div class="chapter-card">
-        <h2>১. কোষের গঠন ও কার্যাবলি</h2>
-        <a href="<?= $base_url ?>/Courses/chapter1">দেখুন</a>
-  
-      </div>
-  
-  
-  
-  
-  
-  
-      <div class="chapter-card">
-        <h2>২. কোষ বিভাজন</h2>
-        <a href="<?= $base_url ?>/Courses/achapter2">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৩. জিনতত্ত্ব ও বিবর্তন</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৪. জীবের শ্রেণিবিন্যাস</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৫. উদ্ভিদ শারীরতত্ত্ব</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৬. উদ্ভিদ প্রজনন</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৭. প্রাণীর টিস্যু</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৮. মানব দেহের পরিপাকতন্ত্র</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>৯. মানব দেহের রক্ত সঞ্চালন তন্ত্র</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>১০. মানব দেহের শ্বসন তন্ত্র</h2>
-        <a href="#">দেখুন</a>
-      </div>
-      <div class="chapter-card">
-        <h2>১১. মানব দেহের নির্গমন তন্ত্র</h2>
-        <a href="#">দেখুন</a>
-      </div> -->
+      
     </div>
   </div>
 </div>

@@ -376,7 +376,7 @@
 
     function openPDFNewTab(filename, title) {
       // Create new window/tab with this page
-      const pdfUrl = `http://rashedul.intelsofts.com/Biology/pdf/${filename}`;
+      const pdfUrl = `<?= $base_url?>/pdf/${filename}`;
       
       // Encode data in URL
       const viewerUrl = `${window.location.href.split('?')[0]}?pdf=${encodeURIComponent(pdfUrl)}&title=${encodeURIComponent(title)}`;
