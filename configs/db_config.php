@@ -10,7 +10,7 @@
    
     define("SERVER","localhost");
     define("USER","root");//rajib
-    define("DATABASE","biology_academy");
+    define("DATABASE","admin2");
     define("PASSWORD","");
 
 

@@ -278,7 +278,7 @@
       
       <div class=\"pdf-card\">
       <h3> $value->name</h3>
-      <button onclick=\"openPDFNewTab('$value->photo', '$value->name')\">দেখুন</button>
+      <button onclick=\"openPDFNewTab('$value->photo', '$value->name')\">Open</button>
       </div>
       
       ";
@@ -293,7 +293,7 @@
 
   <!-- Full Page PDF Viewer -->
   <div class="pdf-viewer-container" id="pdfViewerContainer">
-    <button class="close-viewer" onclick="closeViewer()">✕ বন্ধ করুন</button>
+    <button class="close-viewer" onclick="closeViewer()">✕ Close</button>
     <div class="pdf-content" id="pdfContent">
       <div class="watermark">শুধুমাত্র দেখার জন্য</div>
     </div>
@@ -376,7 +376,7 @@
 
     function openPDFNewTab(filename, title) {
       // Create new window/tab with this page
-      const pdfUrl = `http://localhost/index.php/admin/admin/pdf/${filename}`;
+      const pdfUrl = `http://rashedul.intelsofts.com/Biology/pdf/${filename}`;
       
       // Encode data in URL
       const viewerUrl = `${window.location.href.split('?')[0]}?pdf=${encodeURIComponent(pdfUrl)}&title=${encodeURIComponent(title)}`;

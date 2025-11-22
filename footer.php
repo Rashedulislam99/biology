@@ -40,19 +40,19 @@
                             <ul class="address-widget">
                                 <li>
                                     <i class="flaticon-location"></i>
-                                    <div class="desc">503 Old Buffalo Street Northwest #205 New York-3087</div>
+                                    <div class="desc">368/A Moslehuddin Villa. Elephant road Dhaka</div>
                                 </li>
                                 <li>
                                     <i class="flaticon-call"></i>
                                     <div class="desc">
-                                        <a href="tel:(123)-456-7890">(123)-456-7890</a> , 
-                                        <a href="tel:(123)-456-7890">(123)-456-7890</a>
+                                        <a href="Cell:+8801852-643464">+8801852-643464</a> 
+                                       
                                     </div>
                                 </li>
                                 <li>
                                     <i class="flaticon-email"></i>
                                     <div class="desc">
-                                        <a href="mailto:infoname@gmail.com">infoname@gmail.com</a> , 
+                                        <a href="mailto:biologyjillurrahman@gmail.com">biologyjillurrahman@gmail.com</a> , 
                                         <a href="#">www.yourname.com</a>
                                     </div>
                                 </li>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-lg-4 md-mb-20">
                             <div class="copyright text-center md-text-left">
-                                <p>&copy; 2020 All Rights Reserved. Developed By <a href="http://rstheme.com/">RSTheme</a></p>
+                                <p>&copy; 2025 All Rights Reserved. Developed By Rashedul</a></p>
                             </div>
                         </div>
                         <div class="col-lg-4 text-right md-text-left">

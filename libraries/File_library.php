@@ -14,7 +14,7 @@ class File{
                     if(strcmp($type,"image/png") || strcmp($type,"image/jpeg")){                
     
                         $name=$name!=""?$name:$file["name"];
-                        $name=slugify($name);              
+                        $name=slugify2($name);              
     
                         if(!move_uploaded_file($file["tmp_name"],"$path/{$name}.{$ext}")){
                             copy($file["tmp_name"],"$path/{$name}.{$ext}");
