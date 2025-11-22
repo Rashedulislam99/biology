@@ -3,3 +3,4 @@
   $now=date("Y-m-d H:i:s");  
   $base_url="http://localhost/index.php/Biology";
   //$base_url="http://rashedul.intelsofts.com/Biology";
+  

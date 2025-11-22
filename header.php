@@ -141,7 +141,7 @@ require_once("controllers/controller.php");
                                         </div>
                                         <nav class="rs-menu">
                                            <ul class="nav-menu">
-                                              <li class="rs-mega-menu mega-rs menu-item-has-children current-menu-item"> <a href="<?= $base_url?>">Home</a>
+                                              <li class="rs-mega-menu mega-rs menu-item-has-children current-menu-item"> <a href="index.php">Home</a>
                                                   <ul class="mega-menu"> 
                                                       <li class="mega-menu-container">
                                                           <div class="mega-menu-innner">
