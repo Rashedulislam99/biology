@@ -1,0 +1,42 @@
+[19-Nov-2025 22:56:06 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php:5
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php on line 5
+[21-Nov-2025 22:39:46 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php:5
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php on line 5
+[22-Nov-2025 07:55:48 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's Respiratory System','l-5-grasshopper-s-respiratory-system.pdf','2025-11-22 07:' at line 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php:23
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php(23): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\LectureController.php(38): Lecture->save()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): LectureController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php on line 23
+[22-Nov-2025 07:57:52 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's Respiratory System',photo='n-a.pdf',created_at='2025-11-22 07:57:52' where id=' at line 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php:28
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php(28): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\LectureController.php(80): Lecture->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): LectureController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php on line 28
+[22-Nov-2025 07:58:11 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's Respiratory System',photo='l-5-grasshopper-s-respiratory-system.pdf',created_a' at line 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php:28
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php(28): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\LectureController.php(80): Lecture->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): LectureController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\lecture.model.php on line 28
+[22-Nov-2025 09:49:37 Asia/Dhaka] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php:5
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php on line 5

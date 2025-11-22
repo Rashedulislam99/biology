@@ -141,7 +141,7 @@ require_once("controllers/controller.php");
                                         </div>
                                         <nav class="rs-menu">
                                            <ul class="nav-menu">
-                                              <li class="rs-mega-menu mega-rs menu-item-has-children current-menu-item"> <a href="index.php">Home</a>
+                                              <li class="rs-mega-menu mega-rs menu-item-has-children current-menu-item"> <a href="<?= $base_url?>">Home</a>
                                                   <ul class="mega-menu"> 
                                                       <li class="mega-menu-container">
                                                           <div class="mega-menu-innner">
@@ -289,7 +289,7 @@ require_once("controllers/controller.php");
                                                     <i class="flaticon-bag"></i>
                                                 </a>
                                                 <div class="woocommerce-mini-cart text-left">
-                                                    <div class="cart-bottom-part">
+                                                    <!-- <div class="cart-bottom-part">
                                                         <ul class="cart-icon-product-list">
                                                             <li class="display-flex">
                                                                 <div class="icon-cart">
@@ -326,7 +326,7 @@ require_once("controllers/controller.php");
                                                             <a class="crt-btn btn1" href="cart.html">View Cart</a>
                                                             <a class="crt-btn btn2" href="checkout.html">Check Out</a>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div> 
                                             </li>
                                         </ul>

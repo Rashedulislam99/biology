@@ -9,13 +9,14 @@ if (!$pdf) {
 $pdf = basename($pdf);
 
 // PDFs folder
-$pdf_folder = "http://localhost/Biology_JR/admin/admin/pdfs/";
+ $pdf_folder = "http://rashedul.intelsofts.com/Biology/pdf";
+
 
 // Full URL to PDF
 $pdf_url = $pdf_folder . $pdf;
 
 // Optional: check if file exists on server
-$server_path = __DIR__ . "/pdfs/" . $pdf;
+$server_path = __DIR__ . "/pdf/" . $pdf;
 if (!file_exists($server_path)) {
     die("PDF file not found.");
 }
@@ -34,7 +35,7 @@ if (!file_exists($server_path)) {
 
 <!-- Embed PDF using PDF.js viewer -->
 <iframe 
-    src="http://localhost/Biology_JR/admin/admin/pdfjs/web/viewer.html?file=<?= urlencode($pdf_url) ?>&toolbar=0&navpanes=0&scrollbar=0" 
+    src="http://rashedul.intelsofts.com/Biology/pdf/=<?= urlencode($pdf_url) ?>&toolbar=0&navpanes=0&scrollbar=0" 
     allowfullscreen>
 </iframe>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

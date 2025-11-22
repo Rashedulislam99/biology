@@ -70,7 +70,7 @@
 
 
 <div id="biology">
-    <h1>HSC Biology 1st Paper</h1>
+    <h1>HSC Biology</h1>
   <p>২০২৪–২৫ শিক্ষাবর্ষের সব অধ্যায়ের তালিকা</p>
 
   <div class="chapter-grid">
