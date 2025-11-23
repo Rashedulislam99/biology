@@ -22,6 +22,20 @@ class Quizze extends Model implements JsonSerializable{
 		$this->correct_ans=$correct_ans;
 
 	}
+
+public static function get_by_chapter($chapter_id){
+    global $db,$tx;
+    $result = $db->query("SELECT * FROM {$tx}quizzes WHERE chapter_id='$chapter_id'");
+    $data = [];
+    while($q = $result->fetch_object()){
+        $data[] = $q;
+    }
+    return $data;
+}
+
+
+
+
 	public function save(){
 		global $db,$tx;
 		$db->query("insert into {$tx}quizzes(chapter_id,question,option_a,option_b,option_c,option_d,correct_ans)values('$this->chapter_id','$this->question','$this->option_a','$this->option_b','$this->option_c','$this->option_d','$this->correct_ans')");
@@ -35,7 +49,7 @@ class Quizze extends Model implements JsonSerializable{
 		global $db,$tx;
 		$db->query("delete from {$tx}quizzes where id={$id}");
 	}
-	public function jsonSerialize(){
+	public function jsonSerialize():mixed{
 		return get_object_vars($this);
 	}
 	public static function all(){

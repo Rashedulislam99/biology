@@ -1,160 +1,231 @@
 <?php
-include 'admin/includes/db.php';
-session_start();
-$chapter_id = intval($_GET['chapter'] ?? 0);
-$res = $conn->query("SELECT * FROM quizzes WHERE chapter_id=$chapter_id");
+$page = $_GET['page'] ?? 1;
+$perpage = 10;
+$chapter_id = $_GET["id"];
+
+$total_quizzes = Quizze::count("WHERE chapter_id='$chapter_id'");
+$total_pages = ceil($total_quizzes / $perpage);
+$quizzes = Quizze::pagination($page, $perpage, "WHERE chapter_id='$chapter_id'");
 ?>
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="utf-8">
-<title>Chapter Quiz</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- SCORE BOARD -->
+<div class="score-board" id="score-board">
+    <span>Right: <span id="right-count">0</span></span>
+    <span>Wrong: <span id="wrong-count">0</span></span>
+</div>
+
+
+<!-- QUIZ BOX -->
+<div class="quiz-container">
+    <?php if(count($quizzes) > 0): ?>
+        <?php foreach($quizzes as $index => $q): ?>
+            <div class="quiz-card" data-answer="<?php echo $q->correct_ans; ?>">
+                <h3><?php echo (($page-1)*$perpage + $index +1).". ".$q->question; ?></h3>
+
+                <ul>
+                    <li class="option">A. <?php echo $q->option_a; ?></li>
+                    <li class="option">B. <?php echo $q->option_b; ?></li>
+                    <li class="option">C. <?php echo $q->option_c; ?></li>
+                    <li class="option">D. <?php echo $q->option_d; ?></li>
+                </ul>
+
+                <p class="feedback"></p>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No Quiz Found</p>
+    <?php endif; ?>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination">
+    <?php for($i=1; $i<=$total_pages; $i++): ?>
+        <a href="?id=<?php echo $chapter_id ?>&page=<?php echo $i ?>" class="<?php echo ($i==$page)?'active':''; ?>">
+            <?php echo $i; ?>
+        </a>
+    <?php endfor; ?>
+</div>
+
+<!-- CSS -->
 <style>
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    min-height: 100vh;
-    color: #333;
+body { 
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0; padding:0;
 }
 
-h2 {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 30px;
-    font-size: 32px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+.quiz-container { 
+    padding:100px 20px 20px;
+    max-width:800px;
+    margin:auto;
 }
 
-.quiz-box {
-    background: #fff;
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
+/* QUIZ CARD */
+.quiz-card {
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin:20px 0;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
-.quiz-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+.quiz-card:hover { 
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
 }
 
-.quiz-box p {
-    font-weight: 600;
-    font-size: 18px;
-    margin-bottom: 15px;
+/* QUESTION BLUE */
+.quiz-card h3 {
+    margin-bottom:15px;
+    font-size:18px;
+    color:#1565c0;
+    font-weight:bold;
 }
 
-label {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 16px;
+.quiz-card ul { list-style:none; padding:0; margin:0; }
+
+/* OPTIONS BLACK */
+.quiz-card li.option {
+    color:#000;
+    cursor:pointer;
+    padding:10px 15px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:8px;
+    transition:0.2s;
+    background:#fafafa;
 }
 
-label:hover {
-    transform: translateX(5px);
-    background: #f1f1f1;
+.quiz-card li.option:hover { background:#e3f2fd; }
+
+.quiz-card li.correct { background:#c8e6c9; border-color:#4caf50; }
+.quiz-card li.wrong { background:#ffcdd2; border-color:#f44336; }
+
+.quiz-card .feedback {
+    font-weight:bold;
+    margin-top:8px;
+    color:#555;
 }
 
-input[type="radio"] {
-    margin-right: 10px;
+/* SCOREBOARD RIGHT SIDE */
+.score-board {
+    position:fixed;
+    top:120px;
+    right:20px;
+    padding:12px 20px;
+    background:#1e88e5;
+    color:#fff;
+    font-weight:bold;
+    font-size:16px;
+    border-radius:10px;
+    display:flex;
+    gap:20px;
+    z-index:9999;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.score-board span#wrong-count {
+    color: #f44336; /* Red color */
+    font-weight: bold;
 }
 
-.correct {
-    background: #d4edda !important;
-    color: #155724 !important;
-    font-weight: 600;
-    border-left: 5px solid #28a745;
+.score-board span#right-count {
+    color: #c8e6c9; /* Green color (Optional) */
+    font-weight: bold;
 }
 
-.wrong {
-    background: #f8d7da !important;
-    color: #721c24 !important;
-    font-weight: 600;
-    border-left: 5px solid #dc3545;
+/* PAGINATION */
+.pagination {
+    text-align:center;
+    margin:20px 0;
 }
 
-button[type="submit"] {
-    display: block;
-    margin: 25px auto;
-    background: linear-gradient(45deg, #ff512f, #dd2476);
-    color: #fff;
-    border: none;
-    padding: 12px 35px;
-    font-size: 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+.pagination a {
+    padding:6px 12px;
+    margin:0 3px;
+    border:1px solid #ddd;
+    border-radius:5px;
+    text-decoration:none;
+    color:#333;
 }
 
-button[type="submit"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+.pagination a.active {
+    background:#1e88e5;
+    color:#fff;
+    border-color:#1e88e5;
 }
 
-h3 {
-    text-align: center;
-    font-size: 22px;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    margin-top: 20px;
+@keyframes pulseGreen {
+    0% { transform: scale(1); background:#c8e6c9; }
+    50% { transform: scale(1.05); background:#a5d6a7; }
+    100% { transform: scale(1); background:#c8e6c9; }
 }
+
+@keyframes shakeRed {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 </style>
-</head>
-<body>
 
-<h2>Chapter Quiz</h2>
+<!-- JAVASCRIPT (QUIZ LOGIC) -->
+<script>
+let rightCount = 0;
+let wrongCount = 0;
 
-<?php if($res->num_rows==0) { echo '<p style="text-align:center; color:#fff;">No quiz for this chapter.</p>'; exit; } ?>
+document.querySelectorAll('.quiz-card').forEach((card, index) => {
 
-<form method="POST">
-<?php 
-$qno=1; 
-$quiz_data = []; 
-while($r=$res->fetch_assoc()): 
-    $quiz_data[$r['id']] = $r;
-?>
-  <div class="quiz-box" id="quiz-<?php echo $r['id']; ?>">
-    <p><b><?php echo $qno; ?>.</b> <?php echo htmlspecialchars($r['question']); ?></p>
-    <label><input type="radio" name="ans[<?php echo $r['id']; ?>]" value="A"> <?php echo htmlspecialchars($r['option_a']); ?></label>
-    <label><input type="radio" name="ans[<?php echo $r['id']; ?>]" value="B"> <?php echo htmlspecialchars($r['option_b']); ?></label>
-    <label><input type="radio" name="ans[<?php echo $r['id']; ?>]" value="C"> <?php echo htmlspecialchars($r['option_c']); ?></label>
-    <label><input type="radio" name="ans[<?php echo $r['id']; ?>]" value="D"> <?php echo htmlspecialchars($r['option_d']); ?></label>
-  </div>
-<?php 
-$qno++; 
-endwhile; 
-?>
+    const options = card.querySelectorAll('.option');
+    const correctLetter = card.dataset.answer.trim();   // DB gives: A/B/C/D
+    const feedback = card.querySelector('.feedback');
 
-<button type="submit">Submit Quiz</button>
-</form>
+    options.forEach(option => {
+        option.addEventListener('click', function () {
 
-<?php
-if ($_SERVER['REQUEST_METHOD']=='POST') {
-    $score=0; $total=0;
-    foreach($_POST['ans'] as $qid=>$ans) {
-        $total++;
-        $correct = $quiz_data[$qid]['correct_ans'];
-        $quiz_box_id = "quiz-$qid";
+            const selectedLetter = this.textContent.trim().substring(0,1);  
+            // A, B, C, D
 
-        echo "<script>";
-        // সব সঠিক উত্তর green highlight
-        echo "document.querySelector('#$quiz_box_id input[value=\"$correct\"]').parentNode.classList.add('correct');";
-        // user ভুল দিলে তার option red
-        if($ans != $correct){
-            echo "document.querySelector('#$quiz_box_id input[value=\"$ans\"]').parentNode.classList.add('wrong');";
-        } else { $score++; }
-        echo "</script>";
-    }
-    echo "<h3>Score: $score / $total</h3>";
-}
-?>
-</body>
-</html>
+            // Disable all options
+            options.forEach(o => {
+                o.style.pointerEvents = "none";
+
+                let optLetter = o.textContent.trim().substring(0,1);
+
+                // correct option mark
+                if (optLetter === correctLetter) {
+                    o.classList.add('correct');
+                    o.style.animation = "pulseGreen 0.6s ease";
+                }
+            });
+
+            // If wrong
+            if (selectedLetter !== correctLetter) {
+                this.classList.add('wrong');
+                this.style.animation = "shakeRed 0.5s ease";
+                feedback.textContent = "❌ Wrong! Correct Answer: " + correctLetter;
+                wrongCount++;
+            }
+            else {
+                feedback.textContent = "✅ Correct!";
+                rightCount++;
+            }
+
+            // Update scoreboard
+            document.getElementById('right-count').textContent = rightCount;
+            document.getElementById('wrong-count').textContent = wrongCount;
+
+            // Auto scroll to next question
+            // setTimeout(() => {
+            //     const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
+            //     if (nextCard) {
+            //         nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            //     }
+            // }, 700);
+
+        });
+    });
+});
+</script>
+

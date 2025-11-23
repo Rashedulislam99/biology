@@ -88,7 +88,7 @@ public static function title($config){
        }
       
     
-
-}
+       
+      }
 
 ?>
