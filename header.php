@@ -124,6 +124,7 @@ require_once("controllers/controller.php");
                                             <ul id="cat-menu">
                                                 <li><a href="<?=$base_url?>/chapter">chapters</a></li>
                                                 <li><a href="<?=$base_url?>/lecture">Lecture</a></li>
+                                                <li><a href="<?=$base_url?>/quizze">Quizze</a></li>
                                                 <li><a href="#">Category 3</a></li>
                                                 <li><a href="#">Category 4</a></li>
                                             </ul>
