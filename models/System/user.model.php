@@ -1,5 +1,5 @@
 <?php
-class User extends Model implements JsonSerializable{
+class User2 extends Model implements JsonSerializable{
 	public $id;
 	public $name;
 	public $role_id;

@@ -6,3 +6,5 @@ echo Page::context_open();
 echo Quizze::html_row_details($id);
 echo Page::context_close();
 echo Page::body_close();
+
+

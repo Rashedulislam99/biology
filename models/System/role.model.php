@@ -1,6 +1,6 @@
 <?php
 
-class Role
+class Role1
 {
     public $id;
     public $name;

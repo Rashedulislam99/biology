@@ -363,16 +363,26 @@ function view($path = "", $data = NULL)
     }
 }
 
-function redirect($method = "index", $message = "")
+function redirect($method = "index", $getclass=null, $message = "")
 {
 
-    $class = isset($_GET["class"]) ? $_GET["class"] : "home";
+    $class = ""; 
+    
+    
+    if( !empty($getclass) ){
+       $class = $getclass;
+    }else{
+        isset($_GET["class"]) ? $_GET["class"] : "home";
+
+    }
+    
+    
     global $base_url;
     //header("location:$class/$method");
     if (isset($method)) {
-        echo "<script>window.location='$base_url/$class'</script>";
-    } else {
         echo "<script>window.location='$base_url/$class/$method'</script>";
+    } else {
+        echo "<script>window.location='$base_url/$class'</script>";
     }
 
     //echo "<script>alert('$base_url/$class/$method')</script>";

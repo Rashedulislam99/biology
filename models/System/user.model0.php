@@ -1,5 +1,5 @@
 <?php
-class User implements JsonSerializable{
+class User1 implements JsonSerializable{
 	public $id;
 	public $name;
 	public $photo;
