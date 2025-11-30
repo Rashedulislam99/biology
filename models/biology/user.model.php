@@ -108,91 +108,181 @@ class User extends Model implements JsonSerializable{
 	//-------------HTML----------//
 
 	static function html_select($name="cmbUser"){
-		global $db,$tx;
-		$html="<select id='$name' name='$name'> ";
-		$result =$db->query("select id,name from {$tx}users");
-		while($user=$result->fetch_object()){
-			$html.="<option value ='$user->id'>$user->name</option>";
-		}
-		$html.="</select>";
-		return $html;
-	}
-	static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
-		global $db,$tx,$base_url;
-		$count_result =$db->query("select count(*) total from {$tx}users $criteria ");
-		list($total_rows)=$count_result->fetch_row();
-		$total_pages = ceil($total_rows /$perpage);
-		$top = ($page - 1)*$perpage;
-		$result=$db->query("select id,name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at from {$tx}users $criteria limit $top,$perpage");
-		$html="<table class='table'>";
-			$html.="<tr><th colspan='3'>".Html::link(["class"=>"btn btn-success","route"=>"user/create","text"=>"New User"])."</th></tr>";
-		if($action){
-			$html.="<tr><th>Id</th><th>Name</th><th>Full Name</th><th>Hsc Session</th><th>Class Roll</th><th>Phone</th><th>Email</th><th>Photo</th><th>Password</th><th>Role Id</th><th>Inactive</th><th>Created At</th><th>Updated At</th><th>Action</th></tr>";
-		}else{
-			$html.="<tr><th>Id</th><th>Name</th><th>Full Name</th><th>Hsc Session</th><th>Class Roll</th><th>Phone</th><th>Email</th><th>Photo</th><th>Password</th><th>Role Id</th><th>Inactive</th><th>Created At</th><th>Updated At</th></tr>";
-		}
-		while($user=$result->fetch_object()){
-			$action_buttons = "";
-			if($action){
-				$action_buttons = "<td><div class='btn-group' style='display:flex;'>";
-				$action_buttons.= Event::button(["name"=>"show", "value"=>"Show", "class"=>"btn btn-info", "route"=>"user/show/$user->id"]);
-				$action_buttons.= Event::button(["name"=>"edit", "value"=>"Edit", "class"=>"btn btn-primary", "route"=>"user/edit/$user->id"]);
-				$action_buttons.= Event::button(["name"=>"delete", "value"=>"Delete", "class"=>"btn btn-danger", "route"=>"user/confirm/$user->id"]);
-				$action_buttons.= "</div></td>";
-			}
-			$html.="<tr><td>$user->id</td><td>$user->name</td><td>$user->full_name</td><td>$user->hsc_session</td><td>$user->class_roll</td><td>$user->Phone</td><td>$user->email</td><td>    
-		
-			<img  src='$base_url/img/users/$user->photo' width='100'/>
-			
-			</td><td>$user->password</td><td>$user->role_id</td><td>$user->inactive</td><td>$user->created_at</td><td>$user->updated_at</td> $action_buttons</tr>";
-		}
-		$html.="</table>";
-		$html.= pagination($page,$total_pages);
-		return $html;
-	}
-	static function html_row_details($id){
-		global $db,$tx,$base_url;
-		$result =$db->query("select id,name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at from {$tx}users where id={$id}");
-		$user=$result->fetch_object();
-		$html="<table class='table '>";
-		$html.="<tr><th colspan=\"2\">User Show</th></tr>";
-		$html.="<tr><th>Id</th><td>$user->id</td></tr>";
-		$html.="<tr><th>Name</th><td>$user->name</td></tr>";
-		$html.="<tr><th>Full Name</th><td>$user->full_name</td></tr>";
-		$html.="<tr><th>Hsc Session</th><td>$user->hsc_session</td></tr>";
-		$html.="<tr><th>Class Roll</th><td>$user->class_roll</td></tr>";
-		$html.="<tr><th>Phone</th><td>$user->Phone</td></tr>";
-		$html.="<tr><th>Email</th><td>$user->email</td></tr>";
-		$html.="<tr><th>Photo</th><td>$user->photo</td></tr>";
-		$html.="<tr><th>Password</th><td>$user->password</td></tr>";
-		$html.="<tr><th>Role Id</th><td>$user->role_id</td></tr>";
-		$html.="<tr><th>Inactive</th><td>$user->inactive</td></tr>";
-		$html.="<tr><th>Created At</th><td>$user->created_at</td></tr>";
-		$html.="<tr><th>Updated At</th><td>$user->updated_at</td></tr>";
-
-		$html.="</table>";
-		return $html;
-	}
-
-
-
-
-	public static function findByEmail($email){
-        global $db,$tx;
-        $stmt = $db->prepare("SELECT * FROM {$tx}users WHERE email=? AND inactive=0");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_object();
+    global $db,$tx;
+    $html="<select id='$name' name='$name' class='form-select'> ";
+    $html.="<option value=''>Select User</option>";
+    $result =$db->query("select id,name from {$tx}users");
+    while($user=$result->fetch_object()){
+        $html.="<option value='$user->id'>$user->name</option>";
     }
+    $html.="</select>";
+    return $html;
+}
 
-    // Use bcrypt password while saving new user
-    public function save2(){
-        global $db,$tx;
-        $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
-        $db->query("INSERT INTO {$tx}users(name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at)
-        VALUES('$this->name','$this->full_name','$this->hsc_session','$this->class_roll','$this->Phone','$this->email','$this->photo','$hashedPassword','$this->role_id','$this->inactive','$this->created_at','$this->updated_at')");
-        return $db->insert_id;
+static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
+    global $db,$tx,$base_url;
+    $count_result =$db->query("select count(*) total from {$tx}users $criteria ");
+    list($total_rows)=$count_result->fetch_row();
+    $total_pages = ceil($total_rows /$perpage);
+    $top = ($page - 1)*$perpage;
+    $result=$db->query("select id,name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at from {$tx}users $criteria limit $top,$perpage");
+    
+    $html="<div class='table-responsive'>";
+    $html.="<table class='table table-striped table-hover align-middle'>";
+    $html.="<thead class='table-dark'>";
+    $html.="<tr><th colspan='14'>";
+    $html.=Html::link(["class"=>"btn btn-success btn-sm","route"=>"user/create","text"=>"<i class='bi bi-plus-circle'></i> New User"]);
+    $html.="</th></tr>";
+    
+    if($action){
+        $html.="<tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>HSC Session</th>
+            <th>Class Roll</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Action</th>
+        </tr>";
+    }else{
+        $html.="<tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>HSC Session</th>
+            <th>Class Roll</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Photo</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>";
     }
+    $html.="</thead><tbody>";
+    
+    while($user=$result->fetch_object()){
+        $action_buttons = "";
+        if($action){
+            $action_buttons = "<td>
+                <div class='btn-group btn-group-sm' role='group'>";
+            $action_buttons.= Event::button([
+                "name"=>"show", 
+                "value"=>"<i class='bi bi-eye'></i>", 
+                "class"=>"btn btn-info", 
+                "route"=>"user/show/$user->id"
+            ]);
+            $action_buttons.= Event::button([
+                "name"=>"edit", 
+                "value"=>"<i class='bi bi-pencil'></i>", 
+                "class"=>"btn btn-primary", 
+                "route"=>"user/edit/$user->id"
+            ]);
+            $action_buttons.= Event::button([
+                "name"=>"delete", 
+                "value"=>"<i class='bi bi-trash'></i>", 
+                "class"=>"btn btn-danger", 
+                "route"=>"user/confirm/$user->id"
+            ]);
+            $action_buttons.= "</div></td>";
+        }
+        
+        $statusBadge = $user->inactive ? 
+            "<span class='badge bg-danger'>Inactive</span>" : 
+            "<span class='badge bg-success'>Active</span>";
+        
+        $html.="<tr>
+            <td>$user->id</td>
+            <td>$user->name</td>
+            <td>$user->full_name</td>
+            <td>$user->hsc_session</td>
+            <td>$user->class_roll</td>
+            <td>$user->Phone</td>
+            <td>$user->email</td>
+            <td><img src='$base_url/img/users/$user->photo' class='rounded-circle' width='50' height='50' style='object-fit:cover;'/></td>
+            <td><span class='text-muted'>********</span></td>
+            <td>$user->role_id</td>
+            <td>$statusBadge</td>
+            <td><small class='text-muted'>$user->created_at</small></td>
+            <td><small class='text-muted'>$user->updated_at</small></td>
+            $action_buttons
+        </tr>";
+    }
+    $html.="</tbody></table></div>";
+    $html.= pagination($page,$total_pages);
+    return $html;
+}
+
+static function html_row_details($id){
+    global $db,$tx,$base_url;
+    $result =$db->query("select id,name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at from {$tx}users where id={$id}");
+    $user=$result->fetch_object();
+    
+    $statusBadge = $user->inactive ? 
+        "<span class='badge bg-danger'>Inactive</span>" : 
+        "<span class='badge bg-success'>Active</span>";
+    
+    $html="<div class='card shadow-sm'>";
+    $html.="<div class='card-header bg-primary text-white'>";
+    $html.="<h5 class='mb-0'><i class='bi bi-person-circle'></i> User Details</h5>";
+    $html.="</div>";
+    $html.="<div class='card-body'>";
+    $html.="<div class='row'>";
+    
+    // Left Column
+    $html.="<div class='col-md-8'>";
+    $html.="<table class='table table-bordered'>";
+    $html.="<tr><th class='bg-light' width='30%'>Id</th><td>$user->id</td></tr>";
+    $html.="<tr><th class='bg-light'>Name</th><td>$user->name</td></tr>";
+    $html.="<tr><th class='bg-light'>Full Name</th><td>$user->full_name</td></tr>";
+    $html.="<tr><th class='bg-light'>HSC Session</th><td>$user->hsc_session</td></tr>";
+    $html.="<tr><th class='bg-light'>Class Roll</th><td>$user->class_roll</td></tr>";
+    $html.="<tr><th class='bg-light'>Phone</th><td><i class='bi bi-telephone'></i> $user->Phone</td></tr>";
+    $html.="<tr><th class='bg-light'>Email</th><td><i class='bi bi-envelope'></i> $user->email</td></tr>";
+    $html.="<tr><th class='bg-light'>Role Id</th><td>$user->role_id</td></tr>";
+    $html.="<tr><th class='bg-light'>Status</th><td>$statusBadge</td></tr>";
+    $html.="<tr><th class='bg-light'>Created At</th><td>$user->created_at</td></tr>";
+    $html.="<tr><th class='bg-light'>Updated At</th><td>$user->updated_at</td></tr>";
+    $html.="</table>";
+    $html.="</div>";
+    
+    // Right Column - Photo
+    $html.="<div class='col-md-4 text-center'>";
+    $html.="<img src='$base_url/img/users/$user->photo' class='img-fluid rounded shadow' style='max-width:200px;'/>";
+    $html.="</div>";
+    
+    $html.="</div>"; // row
+    $html.="</div>"; // card-body
+    $html.="</div>"; // card
+    
+    return $html;
+}
+
+public static function findByEmail($email){
+    global $db,$tx;
+    $stmt = $db->prepare("SELECT * FROM {$tx}users WHERE email=? AND inactive=0");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_object();
+}
+
+// Use bcrypt password while saving new user
+public function save2(){
+    global $db,$tx;
+    $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
+    $db->query("INSERT INTO {$tx}users(name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at)
+    VALUES('$this->name','$this->full_name','$this->hsc_session','$this->class_roll','$this->Phone','$this->email','$this->photo','$hashedPassword','$this->role_id','$this->inactive','$this->created_at','$this->updated_at')");
+    return $db->insert_id;
+}
 }
 ?>

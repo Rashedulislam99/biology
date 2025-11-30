@@ -285,62 +285,53 @@ require_once("controllers/controller.php");
                                                     <li><a href="contact4.html">Contact Four</a> </li>
                                                 </ul>
                                             </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="#">Login</a>
+                                                <ul class="sub-menu responsive-left">
+                                                   <li class="menu-item-has-children">
+
+                                                <?php if(isset($_SESSION['user_id'])): ?>
+
+                                                    <!-- If user is logged in -->
+                                                    <a href="<?= $base_url ?>/user/logout">
+                                                        <i class="fa fa-user-check text-success"></i>
+                                                        Logout
+                                                    </a>
+
+                                                    <!-- <ul class="sub-menu responsive-left">
+                                                        <li><a href="<?= $base_url ?>user/logout.php">Logout</a></li>
+                                                    </ul> -->
+
+                                                <?php else: ?>
+
+                                                    <!-- If user is NOT logged in -->
+                                                        <li><a href="<?= $base_url ?>/user/login">Login</a></li>
+                                                        <li><a href="<?= $base_url ?>/user/create">Register</a></li>
+                                                        <!-- <i class="fa fa-sign-in text-primary"></i> -->
+                                                        
+                                                    
+
+                                                
+
+                                                <?php endif; ?>
+
+                                                </li>
+
+
+
+                                                </ul>
+                                            </li>
                                         </ul> <!-- //.nav-menu -->
                                     </nav>
                                 </div> <!-- //.main-menu -->
                                 <div class="expand-btn-inner">
                                     <ul>
                                         <li>
-                                            <a class="hidden-xs rs-search short-border" data-target=".search-modal" data-toggle="modal" href="#">
+                                            <!-- <a class="hidden-xs rs-search short-border" data-target=".search-modal" data-toggle="modal" href="#">
                                                 <i class="flaticon-search"></i>
-                                            </a>
+                                            </a> -->
                                         </li>
-                                        <li class="icon-bar cart-inner no-border mini-cart-active">
-                                            <a class="cart-icon">
-                                                <!-- <span class="cart-count">2</span> -->
-                                                <i class="flaticon-bag"></i>
-                                            </a>
-                                            <div class="woocommerce-mini-cart text-left">
-                                                <!-- <div class="cart-bottom-part">
-                                                        <ul class="cart-icon-product-list">
-                                                            <li class="display-flex">
-                                                                <div class="icon-cart">
-                                                                    <a href="#"><i class="fa fa-times"></i></a>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <a href="cart.html">Law Book</a><br>
-                                                                    <span class="quantity">1 × $30.00</span>
-                                                                </div>
-                                                                <div class="product-image">
-                                                                    <a href="cart.html"><img src="<?= $base_url ?>/assets/images/shop/1.jpg" alt="Product Image"></a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="display-flex">
-                                                                <div class="icon-cart">
-                                                                    <a href="#"><i class="fa fa-times"></i></a>
-                                                                </div>
-                                                                <div class="product-info">
-                                                                    <a href="cart.html">Spirit Level</a><br>
-                                                                    <span class="quantity">1 × $30.00</span>
-                                                                </div>
-                                                                <div class="product-image">
-                                                                    <a href="cart.html"><img src="<?= $base_url ?>/assets/images/shop/2.jpg" alt="Product Image"></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-
-                                                        <div class="total-price text-center">
-                                                            <span class="subtotal">Subtotal:</span>
-                                                            <span class="current-price">$85.00</span>
-                                                        </div>
-
-                                                        <div class="cart-btn text-center">
-                                                            <a class="crt-btn btn1" href="cart.html">View Cart</a>
-                                                            <a class="crt-btn btn2" href="checkout.html">Check Out</a>
-                                                        </div>
-                                                    </div> -->
-                                            </div>
-                                        </li>
+                                       
                                     </ul>
                                     <a id="nav-expander" class="nav-expander style4">
                                         <span class="dot1"></span>
@@ -356,25 +347,42 @@ require_once("controllers/controller.php");
             <!-- Menu End -->
 
             <!-- Canvas Menu start -->
-            <nav class="right_menu_togle hidden-md">
+
+            
+            <!-- <nav class="right_menu_togle hidden-md">
                 <div class="close-btn">
                     <div id="nav-close">
                         <div class="line">
                             <span class="line1"></span><span class="line2"></span>
                         </div>
                     </div>
-                </div>
-                <div class="canvas-logo">
+                </div> -->
+                <!-- <div class="canvas-logo">
                     <a href="index.html"><img src="<?= $base_url ?>/assets/images/logo-dark.png" alt="logo"></a>
-                </div>
-                <div class="offcanvas-text">
+                </div> -->
+
+
+            <!-- <div class="col-md-6 text-end">
+    <div class="card p-3 d-inline-block shadow-sm" style="border-radius: 12px; width: 220px;">
+        <div class="text-center mb-2">
+            <i class="fa fa-user-circle" style="font-size: 40px; color:#0d6efd;"></i>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2">
+            <a href="login.html" class="btn btn-primary btn-sm px-3">Login</a>
+            <a href="register.html" class="btn btn-success btn-sm px-3">Register</a>
+        </div>
+    </div>
+</div> -->
+
+                <!-- <div class="offcanvas-text">
                     <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo by the charms of pleasure of the moment data com so blinded by desire.</p>
                 </div>
                 <div class="offcanvas-gallery">
                     <div class="gallery-img">
                         <a class="image-popup" href="<?= $base_url ?>/assets/images/gallery/1.jpg"><img src="<?= $base_url ?>/assets/images/gallery/1.jpg" alt=""></a>
-                    </div>
-                    <div class="gallery-img">
+                    </div> -->
+                    <!-- <div class="gallery-img">
                         <a class="image-popup" href="<?= $base_url ?>/assets/images/gallery/2.jpg"><img src="<?= $base_url ?>/assets/images/gallery/2.jpg" alt=""></a>
                     </div>
                     <div class="gallery-img">
@@ -392,8 +400,8 @@ require_once("controllers/controller.php");
                 </div>
                 <div class="map-img">
                     <img src="<?= $base_url ?>/assets/images/map.jpg" alt="">
-                </div>
-                <div class="canvas-contact">
+                </div> -->
+                <!-- <div class="canvas-contact">
                     <ul class="social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -401,7 +409,7 @@ require_once("controllers/controller.php");
                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
-            </nav>
+            </nav> -->
             <!-- Canvas Menu end -->
         </header>
         <!--Header End-->
