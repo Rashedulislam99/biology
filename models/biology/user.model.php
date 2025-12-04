@@ -41,6 +41,11 @@ class User extends Model implements JsonSerializable{
 		global $db,$tx;
 		$db->query("update {$tx}users set name='$this->name',full_name='$this->full_name',hsc_session='$this->hsc_session',class_roll='$this->class_roll',Phone='$this->Phone',email='$this->email',photo='$this->photo',password='$this->password',role_id='$this->role_id',inactive='$this->inactive',created_at='$this->created_at',updated_at='$this->updated_at' where id='$this->id'");
 	}
+	public function update2(){
+		global $db,$tx;
+         $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
+		$db->query("update {$tx}users set name='$this->name',full_name='$this->full_name',hsc_session='$this->hsc_session',class_roll='$this->class_roll',Phone='$this->Phone',email='$this->email',photo='$this->photo',password='$hashedPassword',role_id='$this->role_id',inactive='$this->inactive',created_at='$this->created_at',updated_at='$this->updated_at' where id='$this->id'");
+	}
 	public static function delete($id){
 		global $db,$tx;
 		$db->query("delete from {$tx}users where id={$id}");

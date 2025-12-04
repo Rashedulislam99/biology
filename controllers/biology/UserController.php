@@ -65,7 +65,7 @@ class UserController extends Controller
 
 				$user->save2();
 
-				redirect();
+				redirectbase(true);
 			} else {
 				print_r($errors);
 			}
@@ -122,18 +122,29 @@ class UserController extends Controller
 				$user->class_roll = $data["class_roll"];
 				$user->Phone = $data["Phone"];
 				$user->email = $data["email"];
-				$user->photo = upload($file["photo"], "img/users", $data["name"]);
+
+				if (!empty($file["photo"]["name"]) && $file["photo"]["error"] === 0) {
+					$user->photo = upload($file["photo"], "img/users", $data["name"]);
+				} else {
+					$user->photo = User::find($data["id"])->photo;
+				}
+
+
+
+
 				$user->password = $data["password"];
 				$user->role_id = $data["role_id"];
 				$user->inactive = isset($data["inactive"]) ? 1 : 0;
 				$user->created_at = $now;
 				$user->updated_at = $now;
 
-				$user->update();
+				$user->update2();
 				redirect();
 			} else {
 				print_r($errors);
 			}
+
+			print_r($file);
 		}
 	}
 	public function confirm($id)
@@ -175,7 +186,7 @@ class UserController extends Controller
 				$_SESSION['user_id'] = $user->id;
 				$_SESSION['user_name'] = $user->name;
 				$_SESSION['role_id'] = $user->role_id;
-				redirect("biology", "Courses");
+				redirectbase(true);
 				exit;
 			} else {
 				$_SESSION['error'] = "Invalid password!";
