@@ -120,18 +120,32 @@ require_once("controllers/controller.php");
                                         <img src="<?= $base_url ?>/assets/images/logo.png" alt="">
                                     </a>
                                 </div>
-                                <div class="categories-btn">
-                                    <button type="button" class="cat-btn"><i class="fa fa-th"></i>Categories</button>
-                                    <div class="cat-menu-inner">
-                                        <ul id="cat-menu">
-                                            <li><a href="<?= $base_url ?>/chapter">chapters</a></li>
-                                            <li><a href="<?= $base_url ?>/lecture">Lecture</a></li>
-                                            <li><a href="<?= $base_url ?>/quizze">Quizze</a></li>
-                                            <li><a href="#">Category 3</a></li>
-                                            <li><a href="#">Category 4</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+
+
+                                <?php
+                                if (
+                                    isset($_SESSION['role_id']) &&
+                                    ($_SESSION['role_id'] == 1)
+                                ) {
+
+                                    $menu = <<<HTML
+                                        <div class="categories-btn">
+                                            <button type="button" class="cat-btn"><i class="fa fa-th"></i>Categories</button>
+                                            <div class="cat-menu-inner">
+                                                <ul id="cat-menu">
+                                                    <li><a href="{$base_url}/chapter">Chapters</a></li>
+                                                    <li><a href="{$base_url}/lecture">Lecture</a></li>
+                                                    <li><a href="{$base_url}/quizze">Quizze</a></li>
+                                                    <li><a href="{$base_url}/user">User</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        HTML;
+
+                                    echo $menu;
+                                }
+                                ?>
+
                             </div>
                         </div>
                         <div class="col-lg-8 text-center">
@@ -288,39 +302,39 @@ require_once("controllers/controller.php");
                                             <li class="menu-item-has-children">
                                                 <a href="#">Login</a>
                                                 <ul class="sub-menu responsive-left">
-                                                   <li class="menu-item-has-children">
+                                                    <li class="menu-item-has-children">
 
-                                                <?php if(isset($_SESSION['user_id'])): ?>
+                                                        <?php if (isset($_SESSION['user_id'])): ?>
 
-                                                    <!-- If user is logged in -->
-                                                    <a href="<?= $base_url ?>/user/logout">
-                                                        <i class="fa fa-user-check text-success"></i>
-                                                        Logout
-                                                    </a>
+                                                            <!-- If user is logged in -->
+                                                            <a href="<?= $base_url ?>/user/logout">
+                                                                <i class="fa fa-user-check text-success"></i>
+                                                                Logout
+                                                            </a>
 
-                                                    <!-- <ul class="sub-menu responsive-left">
+                                                            <!-- <ul class="sub-menu responsive-left">
                                                         <li><a href="<?= $base_url ?>user/logout.php">Logout</a></li>
                                                     </ul> -->
 
-                                                <?php else: ?>
+                                                        <?php else: ?>
 
-                                                    <!-- If user is NOT logged in -->
-                                                        <li><a href="<?= $base_url ?>/user/login">Login</a></li>
-                                                        <li><a href="<?= $base_url ?>/user/create">Register</a></li>
-                                                        <!-- <i class="fa fa-sign-in text-primary"></i> -->
-                                                        
-                                                    
+                                                            <!-- If user is NOT logged in -->
+                                                    <li><a href="<?= $base_url ?>/user/login">Login</a></li>
+                                                    <li><a href="<?= $base_url ?>/user/create">Register</a></li>
+                                                    <!-- <i class="fa fa-sign-in text-primary"></i> -->
 
-                                                
+
+
+
 
                                                 <?php endif; ?>
 
-                                                </li>
-
-
-
-                                                </ul>
                                             </li>
+
+
+
+                                        </ul>
+                                        </li>
                                         </ul> <!-- //.nav-menu -->
                                     </nav>
                                 </div> <!-- //.main-menu -->
@@ -331,7 +345,7 @@ require_once("controllers/controller.php");
                                                 <i class="flaticon-search"></i>
                                             </a> -->
                                         </li>
-                                       
+
                                     </ul>
                                     <a id="nav-expander" class="nav-expander style4">
                                         <span class="dot1"></span>
@@ -348,7 +362,7 @@ require_once("controllers/controller.php");
 
             <!-- Canvas Menu start -->
 
-            
+
             <!-- <nav class="right_menu_togle hidden-md">
                 <div class="close-btn">
                     <div id="nav-close">
@@ -357,7 +371,7 @@ require_once("controllers/controller.php");
                         </div>
                     </div>
                 </div> -->
-                <!-- <div class="canvas-logo">
+            <!-- <div class="canvas-logo">
                     <a href="index.html"><img src="<?= $base_url ?>/assets/images/logo-dark.png" alt="logo"></a>
                 </div> -->
 
@@ -375,14 +389,14 @@ require_once("controllers/controller.php");
     </div>
 </div> -->
 
-                <!-- <div class="offcanvas-text">
+            <!-- <div class="offcanvas-text">
                     <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo by the charms of pleasure of the moment data com so blinded by desire.</p>
                 </div>
                 <div class="offcanvas-gallery">
                     <div class="gallery-img">
                         <a class="image-popup" href="<?= $base_url ?>/assets/images/gallery/1.jpg"><img src="<?= $base_url ?>/assets/images/gallery/1.jpg" alt=""></a>
                     </div> -->
-                    <!-- <div class="gallery-img">
+            <!-- <div class="gallery-img">
                         <a class="image-popup" href="<?= $base_url ?>/assets/images/gallery/2.jpg"><img src="<?= $base_url ?>/assets/images/gallery/2.jpg" alt=""></a>
                     </div>
                     <div class="gallery-img">
@@ -401,7 +415,7 @@ require_once("controllers/controller.php");
                 <div class="map-img">
                     <img src="<?= $base_url ?>/assets/images/map.jpg" alt="">
                 </div> -->
-                <!-- <div class="canvas-contact">
+            <!-- <div class="canvas-contact">
                     <ul class="social">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
