@@ -1,3 +1,12 @@
+<style>
+    label{
+        color: black;
+        font-weight: bold;
+    }
+</style>
+
+
+
 <?php
 echo Page::title(["title"=>"Edit Chapter"]);
 echo Page::body_open();
