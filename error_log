@@ -40,3 +40,17 @@ Stack trace:
 #2 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
 #3 {main}
   thrown in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php on line 5
+[06-Dec-2025 07:43:05 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'created_at' at row 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php:30
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php(30): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\ChapterController.php(86): Chapter->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): ChapterController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php on line 30
+[06-Dec-2025 07:47:57 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'created_at' at row 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php:30
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php(30): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\ChapterController.php(86): Chapter->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): ChapterController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php on line 30

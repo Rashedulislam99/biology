@@ -10,7 +10,18 @@
   
 
 ?>
+<style>
+.banner-image img {
+    position: relative;
+    top: 57px;   
+      left: 100px;
+}
 
+
+
+
+
+</style>
 <?php include_once("header.php") ?>
 
 		<!-- Main content Start -->
@@ -29,12 +40,12 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="banner-image hidden-md">
-                            <div id="stuff">
+                        <div class="banner-image">
+                            <!-- <div id="stuff"> -->
                                 <div data-depth="0.3">
-                                    <img src="assets/images/banner/bnr3-top.png" alt="">
+                                    <img src="assets/images/banner/bn-top.png" alt="">
                                 </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>

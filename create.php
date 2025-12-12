@@ -79,10 +79,9 @@
 
   <!-- Image Preview -->
   <div class="mt-3">
-    <div id="previewBox" class="p-2 border" style="width:150px; display:none;">
-    <img id="previewImg" src="" class="img-fluid" />
-</div>
-
+    <div id="previewBox" class="p-2 border rounded" style="width:150px; display:none;">
+      <img id="previewImg" src="" class="img-fluid rounded" />
+    </div>
   </div>
 </div>
 

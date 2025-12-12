@@ -213,7 +213,7 @@ static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
             <td>$user->class_roll</td>
             <td>$user->Phone</td>
             <td>$user->email</td>
-            <td><img src='$base_url/img/users/$user->photo' class='rounded-circle' width='50' height='50' style='object-fit:cover;'/></td>
+            <td><img src='$base_url/img/users/$user->photo' class='rounded' width='200' height='250' style='object-fit:cover;'/></td>
             <td><span class='text-muted'>********</span></td>
             <td>$user->role_id</td>
             <td>$statusBadge</td>
