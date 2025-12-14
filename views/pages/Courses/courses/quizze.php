@@ -1,6 +1,6 @@
 <?php
 $page = $_GET['page'] ?? 1;
-$perpage = 10;
+$perpage = 20;
 $chapter_id = $_GET["id"];
 
 $total_quizzes = Quizze::count("WHERE chapter_id='$chapter_id'");
@@ -13,6 +13,70 @@ $quizzes = Quizze::pagination($page, $perpage, "WHERE chapter_id='$chapter_id'")
     <span>Right: <span id="right-count">0</span></span>
     <span>Wrong: <span id="wrong-count">0</span></span>
 </div>
+
+<!-- JAVASCRIPT (QUIZ LOGIC WITH PERSISTENT SCORE) -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // LocalStorage থেকে count fetch
+    let rightCount = localStorage.getItem('rightCount')
+        ? parseInt(localStorage.getItem('rightCount')) : 0;
+
+    let wrongCount = localStorage.getItem('wrongCount')
+        ? parseInt(localStorage.getItem('wrongCount')) : 0;
+
+    // Scoreboard update
+    document.getElementById('right-count').textContent = rightCount;
+    document.getElementById('wrong-count').textContent = wrongCount;
+
+    // QUIZ OPTION CLICK LOGIC
+    document.querySelectorAll('.quiz-card').forEach((card, index) => {
+        const options = card.querySelectorAll('.option');
+        const correctLetter = card.dataset.answer.trim();
+        const feedback = card.querySelector('.feedback');
+
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                const selectedLetter = this.textContent.trim().substring(0,1);
+
+                // Disable all options
+                options.forEach(o => {
+                    o.style.pointerEvents = "none";
+                    let optLetter = o.textContent.trim().substring(0,1);
+                    if (optLetter === correctLetter) {
+                        o.classList.add('correct');
+                        o.style.animation = "pulseGreen 0.6s ease";
+                    }
+                });
+
+                if (selectedLetter !== correctLetter) {
+                    this.classList.add('wrong');
+                    this.style.animation = "shakeRed 0.5s ease";
+                    feedback.textContent = "❌ Wrong! Correct Answer: " + correctLetter;
+                    wrongCount++;
+                    localStorage.setItem('wrongCount', wrongCount);
+                } else {
+                    feedback.textContent = "✅ Correct!";
+                    rightCount++;
+                    localStorage.setItem('rightCount', rightCount);
+                }
+
+                // Update scoreboard
+                document.getElementById('right-count').textContent = rightCount;
+                document.getElementById('wrong-count').textContent = wrongCount;
+
+                // Auto scroll to next question
+                setTimeout(() => {
+                    const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
+                    if (nextCard) {
+                        nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                }, 700);
+            });
+        });
+    });
+});
+</script>
+
 
 
 <!-- QUIZ BOX -->
@@ -217,12 +281,12 @@ document.querySelectorAll('.quiz-card').forEach((card, index) => {
             document.getElementById('wrong-count').textContent = wrongCount;
 
             // Auto scroll to next question
-            // setTimeout(() => {
-            //     const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
-            //     if (nextCard) {
-            //         nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
-            //     }
-            // }, 700);
+            setTimeout(() => {
+                 const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
+                if (nextCard) {
+                   nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+             }, 700);
 
         });
     });
