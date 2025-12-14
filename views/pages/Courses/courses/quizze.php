@@ -16,57 +16,84 @@ $quizzes = Quizze::pagination($page, $perpage, "WHERE chapter_id='$chapter_id'")
 
 <!-- JAVASCRIPT (QUIZ LOGIC WITH PERSISTENT SCORE) -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // LocalStorage থেকে count fetch
-    let rightCount = localStorage.getItem('rightCount')
-        ? parseInt(localStorage.getItem('rightCount')) : 0;
+document.addEventListener("DOMContentLoaded", function () {
 
-    let wrongCount = localStorage.getItem('wrongCount')
-        ? parseInt(localStorage.getItem('wrongCount')) : 0;
+    const chapterId = "<?php echo $chapter_id; ?>";
 
-    // Scoreboard update
-    document.getElementById('right-count').textContent = rightCount;
-    document.getElementById('wrong-count').textContent = wrongCount;
+    const currentChapterKey = "current_chapter";
+    const rightKey = "rightCount_chapter_" + chapterId;
+    const wrongKey = "wrongCount_chapter_" + chapterId;
 
-    // QUIZ OPTION CLICK LOGIC
-    document.querySelectorAll('.quiz-card').forEach((card, index) => {
-        const options = card.querySelectorAll('.option');
+    // আগে কোন chapter ছিল
+    const lastChapter = localStorage.getItem(currentChapterKey);
+
+    // 🔥 New chapter detect হলে old score clear
+    if (lastChapter !== chapterId) {
+        // আগের chapter এর score delete
+        if (lastChapter) {
+            localStorage.removeItem("rightCount_chapter_" + lastChapter);
+            localStorage.removeItem("wrongCount_chapter_" + lastChapter);
+        }
+
+        // নতুন chapter set
+        localStorage.setItem(currentChapterKey, chapterId);
+
+        // নতুন chapter → fresh start
+        localStorage.setItem(rightKey, 0);
+        localStorage.setItem(wrongKey, 0);
+    }
+
+    // Score load (same chapter হলে আগেরটাই আসবে)
+    let rightCount = localStorage.getItem(rightKey)
+        ? parseInt(localStorage.getItem(rightKey)) : 0;
+
+    let wrongCount = localStorage.getItem(wrongKey)
+        ? parseInt(localStorage.getItem(wrongKey)) : 0;
+
+    document.getElementById("right-count").textContent = rightCount;
+    document.getElementById("wrong-count").textContent = wrongCount;
+
+    // ================== QUIZ LOGIC ==================
+    document.querySelectorAll(".quiz-card").forEach((card, index) => {
+
+        const options = card.querySelectorAll(".option");
         const correctLetter = card.dataset.answer.trim();
-        const feedback = card.querySelector('.feedback');
+        const feedback = card.querySelector(".feedback");
 
         options.forEach(option => {
-            option.addEventListener('click', function () {
+            option.addEventListener("click", function () {
+
                 const selectedLetter = this.textContent.trim().substring(0,1);
 
-                // Disable all options
                 options.forEach(o => {
                     o.style.pointerEvents = "none";
-                    let optLetter = o.textContent.trim().substring(0,1);
-                    if (optLetter === correctLetter) {
-                        o.classList.add('correct');
+                    if (o.textContent.trim().substring(0,1) === correctLetter) {
+                        o.classList.add("correct");
                         o.style.animation = "pulseGreen 0.6s ease";
                     }
                 });
 
                 if (selectedLetter !== correctLetter) {
-                    this.classList.add('wrong');
+                    this.classList.add("wrong");
                     this.style.animation = "shakeRed 0.5s ease";
                     feedback.textContent = "❌ Wrong! Correct Answer: " + correctLetter;
                     wrongCount++;
-                    localStorage.setItem('wrongCount', wrongCount);
                 } else {
                     feedback.textContent = "✅ Correct!";
                     rightCount++;
-                    localStorage.setItem('rightCount', rightCount);
                 }
 
-                // Update scoreboard
-                document.getElementById('right-count').textContent = rightCount;
-                document.getElementById('wrong-count').textContent = wrongCount;
+                // Save score
+                localStorage.setItem(rightKey, rightCount);
+                localStorage.setItem(wrongKey, wrongCount);
 
-                // Auto scroll to next question
+                // Update UI
+                document.getElementById("right-count").textContent = rightCount;
+                document.getElementById("wrong-count").textContent = wrongCount;
+
+                // Auto scroll
                 setTimeout(() => {
-                    const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
+                    const nextCard = document.querySelectorAll(".quiz-card")[index + 1];
                     if (nextCard) {
                         nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
                     }
@@ -74,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+
 });
 </script>
 
