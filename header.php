@@ -16,7 +16,7 @@ require_once("controllers/controller.php");
 <head>
     <!-- meta tag -->
     <meta charset="utf-8">
-    <title>Educavo - Education HTML Template</title>
+    <title>Jillur Rahman Biology academy</title>
     <meta name="description" content="">
     <!-- responsive tag -->
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -153,7 +153,7 @@ require_once("controllers/controller.php");
                                 <div class="main-menu pr-90 md-pr-15">
                                     <div class="mobile-menu">
                                         <a class="rs-menu-toggle">
-                                            <i class="fa fa-bars"></i>
+                                            <i class="fa fa-bars" style="color:red;"></i>
                                         </a>
                                     </div>
                                     <nav class="rs-menu">

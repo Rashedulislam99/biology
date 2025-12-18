@@ -133,6 +133,24 @@ static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
     $result=$db->query("select id,name,full_name,hsc_session,class_roll,Phone,email,photo,password,role_id,inactive,created_at,updated_at from {$tx}users $criteria limit $top,$perpage");
     
     $html="<div class='table-responsive'>";
+
+    $html.="
+    
+                <form class=\"d-flex mb-3\" method=\"GET\" action=\" $base_url/user\">
+                <input 
+                    class=\"form-control me-2\" 
+                    type=\"search\" 
+                    name=\"name\"
+                    placeholder=\"Search by Name or Roll\"  >
+                      <button class=\"btn btn-primary\" type=\"submit\">
+                    Search
+                </button>
+            </form>
+
+    
+    
+    ";
+
     $html.="<table class='table table-striped table-hover align-middle'>";
     $html.="<thead class='table-dark'>";
     $html.="<tr><th colspan='14'>";
@@ -213,7 +231,7 @@ static function html_table($page = 1,$perpage = 10,$criteria="",$action=true){
             <td>$user->class_roll</td>
             <td>$user->Phone</td>
             <td>$user->email</td>
-            <td><img src='$base_url/img/users/$user->photo' class='rounded-circle' width='50' height='50' style='object-fit:cover;'/></td>
+            <td><img src='$base_url/img/users/$user->photo' class='rounded' width='200' height='250' style='object-fit:cover;'/></td>
             <td><span class='text-muted'>********</span></td>
             <td>$user->role_id</td>
             <td>$statusBadge</td>

@@ -1,6 +1,6 @@
 <?php
 $page = $_GET['page'] ?? 1;
-$perpage = 10;
+$perpage = 20;
 $chapter_id = $_GET["id"];
 
 $total_quizzes = Quizze::count("WHERE chapter_id='$chapter_id'");
@@ -13,6 +13,98 @@ $quizzes = Quizze::pagination($page, $perpage, "WHERE chapter_id='$chapter_id'")
     <span>Right: <span id="right-count">0</span></span>
     <span>Wrong: <span id="wrong-count">0</span></span>
 </div>
+
+<!-- JAVASCRIPT (QUIZ LOGIC WITH PERSISTENT SCORE) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const chapterId = "<?php echo $chapter_id; ?>";
+
+    const currentChapterKey = "current_chapter";
+    const rightKey = "rightCount_chapter_" + chapterId;
+    const wrongKey = "wrongCount_chapter_" + chapterId;
+
+    // আগে কোন chapter ছিল
+    const lastChapter = localStorage.getItem(currentChapterKey);
+
+    // 🔥 New chapter detect হলে old score clear
+    if (lastChapter !== chapterId) {
+        // আগের chapter এর score delete
+        if (lastChapter) {
+            localStorage.removeItem("rightCount_chapter_" + lastChapter);
+            localStorage.removeItem("wrongCount_chapter_" + lastChapter);
+        }
+
+        // নতুন chapter set
+        localStorage.setItem(currentChapterKey, chapterId);
+
+        // নতুন chapter → fresh start
+        localStorage.setItem(rightKey, 0);
+        localStorage.setItem(wrongKey, 0);
+    }
+
+    // Score load (same chapter হলে আগেরটাই আসবে)
+    let rightCount = localStorage.getItem(rightKey)
+        ? parseInt(localStorage.getItem(rightKey)) : 0;
+
+    let wrongCount = localStorage.getItem(wrongKey)
+        ? parseInt(localStorage.getItem(wrongKey)) : 0;
+
+    document.getElementById("right-count").textContent = rightCount;
+    document.getElementById("wrong-count").textContent = wrongCount;
+
+    // ================== QUIZ LOGIC ==================
+    document.querySelectorAll(".quiz-card").forEach((card, index) => {
+
+        const options = card.querySelectorAll(".option");
+        const correctLetter = card.dataset.answer.trim();
+        const feedback = card.querySelector(".feedback");
+
+        options.forEach(option => {
+            option.addEventListener("click", function () {
+
+                const selectedLetter = this.textContent.trim().substring(0,1);
+
+                options.forEach(o => {
+                    o.style.pointerEvents = "none";
+                    if (o.textContent.trim().substring(0,1) === correctLetter) {
+                        o.classList.add("correct");
+                        o.style.animation = "pulseGreen 0.6s ease";
+                    }
+                });
+
+                if (selectedLetter !== correctLetter) {
+                    this.classList.add("wrong");
+                    this.style.animation = "shakeRed 0.5s ease";
+                    feedback.textContent = "❌ Wrong! Correct Answer: " + correctLetter;
+                    wrongCount++;
+                } else {
+                    feedback.textContent = "✅ Correct!";
+                    rightCount++;
+                }
+
+                // Save score
+                localStorage.setItem(rightKey, rightCount);
+                localStorage.setItem(wrongKey, wrongCount);
+
+                // Update UI
+                document.getElementById("right-count").textContent = rightCount;
+                document.getElementById("wrong-count").textContent = wrongCount;
+
+                // Auto scroll
+                setTimeout(() => {
+                    const nextCard = document.querySelectorAll(".quiz-card")[index + 1];
+                    if (nextCard) {
+                        nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                }, 700);
+            });
+        });
+    });
+
+});
+</script>
+
 
 
 <!-- QUIZ BOX -->
@@ -217,12 +309,12 @@ document.querySelectorAll('.quiz-card').forEach((card, index) => {
             document.getElementById('wrong-count').textContent = wrongCount;
 
             // Auto scroll to next question
-            // setTimeout(() => {
-            //     const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
-            //     if (nextCard) {
-            //         nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
-            //     }
-            // }, 700);
+            setTimeout(() => {
+                 const nextCard = document.querySelectorAll('.quiz-card')[index + 1];
+                if (nextCard) {
+                   nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+             }, 700);
 
         });
     });

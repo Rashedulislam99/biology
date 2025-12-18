@@ -40,3 +40,212 @@ Stack trace:
 #2 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
 #3 {main}
   thrown in D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php on line 5
+[06-Dec-2025 07:43:05 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'created_at' at row 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php:30
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php(30): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\ChapterController.php(86): Chapter->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): ChapterController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php on line 30
+[06-Dec-2025 07:47:57 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect datetime value: '' for column 'created_at' at row 1 in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php:30
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php(30): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\ChapterController.php(86): Chapter->update()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): ChapterController->update()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\chapter.model.php on line 30
+[12-Dec-2025 14:20:01 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 14:20:44 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 14:58:26 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'mahdi.hasangl@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 15:33:23 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'mahdi.hasangl@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 18:54:16 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'azmainnurmahin@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 18:55:24 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'azmainnurmahin@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 18:59:18 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'azmainnurmahin@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 20:15:40 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'azmainnurmahin@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[12-Dec-2025 21:12:38 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[13-Dec-2025 16:51:55 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'wdpf66_rashedul.bio_quizzes' doesn't exist in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php:76
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php(76): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php(6): Quizze::count()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once('...')
+#3 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#4 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#5 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php on line 76
+[13-Dec-2025 16:52:26 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'wdpf66_rashedul.bio_quizzes' doesn't exist in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php:76
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php(76): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php(6): Quizze::count()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once('...')
+#3 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#4 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#5 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php on line 76
+[13-Dec-2025 16:52:34 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'wdpf66_rashedul.bio_quizzes' doesn't exist in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php:76
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php(76): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\views\pages\Courses\courses\quizze.php(6): Quizze::count()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(360): include_once('...')
+#3 D:\webserver\www\student\round66\rashedul\Biology\controllers\Courses\CoursesController.php(11): view()
+#4 D:\webserver\www\student\round66\rashedul\Biology\route.php(74): CoursesController->index()
+#5 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\quizze.model.php on line 76
+[13-Dec-2025 18:31:34 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'azmainnurmahin@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[14-Dec-2025 12:16:45 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'iqbalhossainbhuiyan27@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[14-Dec-2025 18:47:45 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 16:02:58 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'srtbrinto2@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 16:03:44 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'srtbrinto2@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 16:10:52 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'srtbrinto2@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 17:17:29 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 17:18:10 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 17:20:56 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 17:23:01 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 22:13:09 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 22:13:13 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 22:13:27 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[15-Dec-2025 22:15:00 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Kohinoor41-1294@diu.edu.bd' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
+[16-Dec-2025 10:24:58 Asia/Dhaka] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'smili.gfx@gmail.com' for key 'email' in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php:288
+Stack trace:
+#0 D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php(288): mysqli->query()
+#1 D:\webserver\www\student\round66\rashedul\Biology\controllers\biology\UserController.php(66): User->save2()
+#2 D:\webserver\www\student\round66\rashedul\Biology\route.php(67): UserController->save()
+#3 {main}
+  thrown in D:\webserver\www\student\round66\rashedul\Biology\models\biology\user.model.php on line 288
